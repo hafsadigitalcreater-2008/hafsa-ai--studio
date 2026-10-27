@@ -1,0 +1,19 @@
+{
+  "name": "Hafsa AI Studio",
+  "short_name": "Hafsa AI",
+  "description": "Hafsa AI Studio - Your creative AI workspace",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fbf8f1",
+  "theme_color": "#526b55",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

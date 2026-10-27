@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="110" fill="#526b55"/>
+  <circle cx="256" cy="256" r="175" fill="#fbf8f1"/>
+  <text x="256" y="290"
+        font-family="Georgia,serif"
+        font-size="145"
+        font-weight="bold"
+        text-anchor="middle"
+        fill="#526b55">H</text>
+  <circle cx="365" cy="145" r="32" fill="#b79a60"/>
+  <path d="M349 145 L361 157 L382 131"
+        fill="none" stroke="#fffefa"
+        stroke-width="9" stroke-linecap="round"
+        stroke-linejoin="round"/>
+</svg>

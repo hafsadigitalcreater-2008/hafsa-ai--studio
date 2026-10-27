@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#234b3b">
+<title>Hafsa AI Studio</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f8f6ef;color:#243d32}
+header{background:#234b3b;color:white;padding:22px;text-align:center}
+header h1{margin:0 0 8px;font-family:Georgia,serif}
+header p{margin:0;color:#e7e9d9}
+nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:16px}
+button{cursor:pointer;border:0;border-radius:10px;padding:12px 16px;font-size:15px}
+nav button,.primary{background:#315b47;color:white}
+nav button:hover,.primary:hover{background:#b89a60;color:#fff}
+main{max-width:850px;margin:10px auto;padding:16px}
+.card{background:white;border:1px solid #e5e1d5;border-radius:18px;padding:22px;margin-bottom:18px;box-shadow:0 5px 20px #263b3010}
+h2{font-family:Georgia,serif}
+textarea,input{width:100%;padding:14px;border:1px solid #d8d8cc;border-radius:10px;font:inherit;margin:8px 0 12px;background:#fffefa}
+textarea{min-height:120px;resize:vertical}
+.result{white-space:pre-wrap;overflow-wrap:anywhere;background:#f2f4ec;padding:16px;border-radius:12px;min-height:55px;margin-top:14px}
+.small{color:#66766a;font-size:13px}
+footer{text-align:center;padding:25px;color:#66766a}
+</style>
+</head>
+<body>
+<header>
+<h1>✦ Hafsa AI Studio</h1>
+<p>Your Ideas • Our AI Power</p>
+</header>
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('chat')">AI Chat</button>
+<button onclick="show('content')">Content Creator</button>
+<button onclick="show('web')">Website Helper</button>
+</nav>
+<main>
+<section id="home" class="card">
+<h2>Welcome to Hafsa AI Studio!</h2>
+<p>Your creative workspace for ideas, social media content and website learning.</p>
+<button class="primary" onclick="show('chat')">Start Chatting</button>
+<button onclick="show('content')">Create Content</button>
+<p class="small">First prototype • Designed for mobile and computer</p>
+</section>
+
+<section id="chat" class="card" hidden>
+<h2>AI Chat Assistant</h2>
+<p>Write a question or ask for an idea.</p>
+<textarea id="question" placeholder="Example: Give me a business idea..."></textarea>
+<button class="primary" onclick="ask()">Get Help</button>
+<div id="answer" class="result">Your response will appear here.</div>
+<p class="small">This first version uses sample responses. A real AI service will be connected later.</p>
+</section>
+
+<section id="content" class="card" hidden>
+<h2>Social Media Content Creator</h2>
+<label for="topic">What is your post or video about?</label>
+<input id="topic" placeholder="Example: Website designing services">
+<label for="platform">Choose platform</label>
+<select id="platform" style="width:100%;padding:12px;border-radius:10px">
+<option>Instagram</option><option>Facebook</option><option>TikTok</option>
+</select>
+<br><br>
+<button class="primary" onclick="createContent()">Create Content</button>
+<div id="contentResult" class="result">Your content will appear here.</div>
+<button onclick="copyResult('contentResult')">Copy Result</button>
+</section>
+
+<section id="web" class="card" hidden>
+<h2>Website & Software Helper</h2>
+<p>Learn how to start building your project.</p>
+<textarea id="project" placeholder="Describe the website or software you want to create"></textarea>
+<button class="primary" onclick="helpProject()">Get Starter Guide</button>
+<div id="projectResult" class="result">Your guide will appear here.</div>
+</section>
+</main>
+<footer>© 2026 Hafsa AI Studio • Keep creating!</footer>
+<script>
+function show(id){
+document.querySelectorAll('main section').forEach(s=>s.hidden=true);
+document.getElementById(id).hidden=false;
+window.scrollTo({top:0,behavior:'smooth'});
+}
+function ask(){
+let q=document.getElementById('question').value.trim();
+let a=document.getElementById('answer');
+if(!q){a.textContent='Please write a question first.';return;}
+a.textContent='Your question: '+q+'\n\nTo answer this properly with AI, Hafsa AI Studio needs to connect to an AI service. This demo is working, but real AI answers are not connected yet.';
+}
+function createContent(){
+let t=document.getElementById('topic').value.trim();
+let p=document.getElementById('platform').value;
+let r=document.getElementById('contentResult');
+if(!t){r.textContent='Please enter a topic first.';return;}
+r.textContent=p+' Post Idea\n\n✨ Bring your ideas to life!\n\n'+t+'\n\nNeed creative digital solutions? Let’s make your next idea happen.\n\n#DigitalServices #CreativeIdeas #'+p.replace(/\s/g,'');
+}
+function helpProject(){
+let p=document.getElementById('project').value.trim();
+let r=document.getElementById('projectResult');
+if(!p){r.textContent='Please describe your project first.';return;}
+r.textContent='Your project: '+p+'\n\nStarter steps:\n1. List the main features.\n2. Sketch the screens you need.\n3. Build one feature at a time.\n4. Test on your computer and mobile.\n5. Add accounts and data storage when needed.\n\nThis is a starter guide, not generated AI code.';
+}
+function copyResult(id){
+let text=document.getElementById(id).innerText;
+if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>alert('Copied!')).catch(()=>alert('Please select the result and copy it manually.'));}
+else{alert('Please select the result and press Ctrl+C.');}
+}
+</script>
+</body>
+</html>

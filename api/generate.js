@@ -41,10 +41,15 @@ export default async function handler(req, res) {
       status: "IN_QUEUE"
     });
   } catch (error) {
-    console.error("fal.ai request failed:", error);
+    console.error("fal.ai request failed:", {
+      message: error?.message,
+      status: error?.status,
+      body: error?.body
+    });
 
     return res.status(500).json({
-      error: "Video request failed. Check server logs."
+      error: "Video request failed",
+      details: error?.message || "Unknown server error"
     });
   }
 }

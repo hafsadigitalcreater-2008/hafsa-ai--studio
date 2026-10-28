@@ -6,7 +6,6 @@
   <meta name="theme-color" content="#526b55">
   <meta name="description" content="Hafsa AI Studio - Your creative AI workspace">
   <title>Hafsa AI Studio</title>
-
   <link rel="manifest" href="./manifest.json">
 
   <style>
@@ -20,9 +19,7 @@
       --muted: #687268;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -63,9 +60,7 @@
       border-radius: 8px;
     }
 
-    nav a:hover {
-      background: var(--sage);
-    }
+    nav a:hover { background: var(--sage); }
 
     .hero {
       padding: 58px 20px;
@@ -112,6 +107,11 @@
       color: #fff;
     }
 
+    .button:disabled {
+      opacity: 0.65;
+      cursor: wait;
+    }
+
     main {
       max-width: 1050px;
       padding: 30px 16px 60px;
@@ -153,9 +153,7 @@
       color: var(--green);
     }
 
-    textarea,
-    input,
-    select {
+    textarea, input, select {
       width: 100%;
       padding: 12px;
       margin: 7px 0 13px;
@@ -189,6 +187,14 @@
       font-size: 14px;
     }
 
+    .video-frame {
+      width: 100%;
+      max-height: 600px;
+      margin-top: 16px;
+      border-radius: 12px;
+      background: #000;
+    }
+
     footer {
       text-align: center;
       padding: 26px 15px;
@@ -196,22 +202,12 @@
       color: white;
     }
 
-    footer p {
-      margin: 4px;
-    }
+    footer p { margin: 4px; }
 
     @media (max-width: 520px) {
-      header {
-        justify-content: center;
-      }
-
-      nav {
-        justify-content: center;
-      }
-
-      .hero {
-        padding: 42px 18px;
-      }
+      header { justify-content: center; }
+      nav { justify-content: center; }
+      .hero { padding: 42px 18px; }
     }
   </style>
 </head>
@@ -221,6 +217,7 @@
     <div class="brand">✦ Hafsa AI Studio</div>
     <nav aria-label="Main navigation">
       <a href="#home">Home</a>
+      <a href="#videoCreator">AI Video</a>
       <a href="#chat">AI Chat</a>
       <a href="#creator">Content Creator</a>
       <a href="#website">Website Helper</a>
@@ -231,14 +228,56 @@
     <div class="eyebrow">Your creative workspace</div>
     <h1>Create More.<br>Build Something Beautiful.</h1>
     <p>
-      Your workspace for content ideas, social media writing,
-      website planning and learning about technology.
+      Create video ideas, plan social content, and build your digital projects
+      with Hafsa AI Studio.
     </p>
-    <a class="button" href="#chat">Explore AI Tools</a>
+    <a class="button" href="#videoCreator">Create AI Video</a>
     <a class="button secondary" href="#creator">Create Content</a>
   </section>
 
   <main>
+    <!-- AI VIDEO CREATOR -->
+    <section id="videoCreator">
+      <h2 class="section-title">AI Video Creator</h2>
+      <p class="section-intro">
+        Turn your text prompt into an AI-generated video.
+      </p>
+
+      <div class="card">
+        <label for="videoPrompt">Describe your video</label>
+        <textarea id="videoPrompt"
+          placeholder="Example: A peaceful garden at sunrise, cinematic camera movement, realistic lighting..."></textarea>
+
+        <label for="videoRatio">Video format</label>
+        <select id="videoRatio">
+          <option value="9:16">Vertical — Instagram Reels / TikTok</option>
+          <option value="16:9">Landscape — YouTube</option>
+          <option value="1:1">Square</option>
+        </select>
+
+        <button class="button" id="videoGenerateButton">
+          Generate Video
+        </button>
+
+        <div class="output" id="videoOutput" aria-live="polite">
+          Your video status will appear here.
+        </div>
+
+        <video id="generatedVideo"
+          class="video-frame"
+          controls
+          playsinline
+          style="display:none;">
+        </video>
+
+        <p class="notice">
+          Video generation uses fal.ai and may incur charges according to
+          your account and model pricing. Generation time can vary.
+        </p>
+      </div>
+    </section>
+
+    <!-- AI CHAT -->
     <section id="chat">
       <h2 class="section-title">AI Chat</h2>
       <p class="section-intro">
@@ -247,7 +286,8 @@
 
       <div class="card">
         <label for="chatInput">Your message</label>
-        <textarea id="chatInput" placeholder="Write your question here..."></textarea>
+        <textarea id="chatInput"
+          placeholder="Write your question here..."></textarea>
         <button class="button" id="chatButton">Send Message</button>
         <div class="output" id="chatOutput" aria-live="polite">
           Your demo response will appear here.
@@ -258,10 +298,11 @@
       </div>
     </section>
 
+    <!-- SOCIAL CONTENT CREATOR -->
     <section id="creator">
       <h2 class="section-title">Social Content Creator</h2>
       <p class="section-intro">
-        Prepare a basic caption or video idea for your social pages.
+        Prepare a caption, short video script or content ideas.
       </p>
 
       <div class="card">
@@ -291,6 +332,7 @@
       </div>
     </section>
 
+    <!-- WEBSITE HELPER -->
     <section id="website">
       <h2 class="section-title">Website Helper</h2>
       <p class="section-intro">
@@ -320,7 +362,7 @@
         <div class="card">
           <h3>Learning Corner</h3>
           <p>
-            Learn about HTML, CSS, JavaScript, websites and apps
+            Learn HTML, CSS, JavaScript, websites and apps
             one step at a time.
           </p>
           <button class="button" id="learnButton">Show First Lesson</button>
@@ -341,6 +383,109 @@
 
     $("year").textContent = new Date().getFullYear();
 
+    // AI VIDEO GENERATOR
+    $("videoGenerateButton").addEventListener("click", async () => {
+      const prompt = $("videoPrompt").value.trim();
+      const aspect_ratio = $("videoRatio").value;
+      const button = $("videoGenerateButton");
+      const output = $("videoOutput");
+      const video = $("generatedVideo");
+
+      if (!prompt) {
+        output.textContent = "Please describe the video you want to create.";
+        $("videoPrompt").focus();
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = "Submitting...";
+      video.style.display = "none";
+      video.removeAttribute("src");
+      video.load();
+
+      try {
+        output.textContent = "Submitting your video request to the AI service...";
+
+        const response = await fetch("/api/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt, aspect_ratio })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Could not submit the video request.");
+        }
+
+        if (!data.requestId) {
+          throw new Error("The server did not return a video request ID.");
+        }
+
+        const requestId = data.requestId;
+        output.textContent =
+          "Your video is in the queue. Please wait; this can take a few minutes.";
+
+        const deadline = Date.now() + 5 * 60 * 1000;
+        let completed = false;
+
+        while (Date.now() < deadline) {
+          await new Promise(resolve => setTimeout(resolve, 5000));
+
+          const statusResponse = await fetch("/api/status", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ requestId })
+          });
+
+          const statusData = await statusResponse.json();
+
+          if (!statusResponse.ok) {
+            throw new Error(statusData.error || "Could not check video status.");
+          }
+
+          if (statusData.status === "COMPLETED") {
+            if (!statusData.video) {
+              throw new Error("The job finished, but no video URL was returned.");
+            }
+
+            video.src = statusData.video;
+            video.style.display = "block";
+            video.load();
+
+            output.textContent =
+              "Your video is ready! Press Play to watch it. You can use the video player's menu to save it if available.";
+
+            completed = true;
+            break;
+          }
+
+          if (
+            statusData.status === "FAILED" ||
+            statusData.status === "CANCELLED"
+          ) {
+            throw new Error("Video generation did not complete. Please try again.");
+          }
+
+          output.textContent =
+            "Video status: " + (statusData.status || "PROCESSING") +
+            "\nPlease keep this page open while the video is being generated.";
+        }
+
+        if (!completed) {
+          output.textContent =
+            "This is taking longer than expected. Your request may still be processing. Please try checking again later.";
+        }
+      } catch (error) {
+        console.error("Video generation error:", error);
+        output.textContent = "Error: " + (error.message || "Something went wrong.");
+      } finally {
+        button.disabled = false;
+        button.textContent = "Generate Video";
+      }
+    });
+
+    // AI CHAT DEMO
     $("chatButton").addEventListener("click", () => {
       const message = $("chatInput").value.trim();
 
@@ -355,6 +500,7 @@
         "to receive real AI-generated answers.";
     });
 
+    // SOCIAL CONTENT DRAFTS
     $("generateButton").addEventListener("click", () => {
       const topic = $("topic").value.trim();
       const platform = $("platform").value;
@@ -412,6 +558,7 @@
       }
     });
 
+    // WEBSITE PLANNER
     $("planButton").addEventListener("click", () => {
       const name = $("projectName").value.trim();
       const type = $("projectType").value;
@@ -432,6 +579,7 @@
         "5. Publish the website and check every link.";
     });
 
+    // LEARNING CORNER
     $("learnButton").addEventListener("click", () => {
       $("lessonOutput").textContent =
         "LESSON 1: HTML\n\n" +
@@ -441,10 +589,11 @@
         "adds interactions.";
     });
 
+    // SERVICE WORKER
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker.register("./service-worker.js")
-          .catch((error) => {
+          .catch(error => {
             console.error("Service worker registration failed:", error);
           });
       });

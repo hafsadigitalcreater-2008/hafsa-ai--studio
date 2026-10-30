@@ -1,603 +1,194 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#526b55">
-  <meta name="description" content="Hafsa AI Studio - Your creative AI workspace">
-  <title>Hafsa AI Studio</title>
-  <link rel="manifest" href="./manifest.json">
-
-  <style>
-    :root {
-      --cream: #fbf8f1;
-      --white: #fffefa;
-      --sage: #e7ede3;
-      --green: #526b55;
-      --gold: #b79a60;
-      --text: #26352a;
-      --muted: #687268;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--cream);
-      color: var(--text);
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
-
-    header {
-      background: var(--white);
-      border-bottom: 1px solid #e7e2d7;
-      padding: 16px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      font-size: 21px;
-      font-weight: 800;
-      color: var(--green);
-    }
-
-    nav {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: var(--green);
-      text-decoration: none;
-      font-size: 14px;
-      padding: 6px 9px;
-      border-radius: 8px;
-    }
-
-    nav a:hover { background: var(--sage); }
-
-    .hero {
-      padding: 58px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, var(--sage), var(--cream));
-    }
-
-    .eyebrow {
-      color: var(--green);
-      font-weight: bold;
-      letter-spacing: 2px;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(34px, 7vw, 58px);
-      line-height: 1.15;
-      margin: 14px auto;
-      max-width: 760px;
-    }
-
-    .hero p {
-      max-width: 600px;
-      margin: 16px auto;
-      color: var(--muted);
-    }
-
-    .button {
-      display: inline-block;
-      background: var(--green);
-      color: white;
-      border: 0;
-      border-radius: 10px;
-      padding: 12px 18px;
-      text-decoration: none;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    .button.secondary {
-      background: var(--gold);
-      color: #fff;
-    }
-
-    .button:disabled {
-      opacity: 0.65;
-      cursor: wait;
-    }
-
-    main {
-      max-width: 1050px;
-      padding: 30px 16px 60px;
-      margin: auto;
-    }
-
-    section {
-      scroll-margin-top: 20px;
-      margin: 28px 0;
-    }
-
-    .section-title {
-      font-family: Georgia, serif;
-      font-size: 29px;
-      margin-bottom: 5px;
-    }
-
-    .section-intro {
-      color: var(--muted);
-      margin-top: 0;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--white);
-      padding: 22px;
-      border: 1px solid #e8e4da;
-      border-radius: 17px;
-      box-shadow: 0 5px 20px #26352a08;
-    }
-
-    .card h3 {
-      margin-top: 0;
-      color: var(--green);
-    }
-
-    textarea, input, select {
-      width: 100%;
-      padding: 12px;
-      margin: 7px 0 13px;
-      border: 1px solid #d9ded5;
-      border-radius: 9px;
-      font: inherit;
-      background: white;
-      color: var(--text);
-    }
-
-    textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .output {
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-      background: #f3f3eb;
-      padding: 14px;
-      border-radius: 10px;
-      margin-top: 14px;
-      min-height: 40px;
-    }
-
-    .notice {
-      background: #fff4d9;
-      border-radius: 10px;
-      padding: 12px;
-      color: #5b4b28;
-      font-size: 14px;
-    }
-
-    .video-frame {
-      width: 100%;
-      max-height: 600px;
-      margin-top: 16px;
-      border-radius: 12px;
-      background: #000;
-    }
-
-    footer {
-      text-align: center;
-      padding: 26px 15px;
-      background: var(--green);
-      color: white;
-    }
-
-    footer p { margin: 4px; }
-
-    @media (max-width: 520px) {
-      header { justify-content: center; }
-      nav { justify-content: center; }
-      .hero { padding: 42px 18px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#526b55">
+<title>Hafsa AI Studio</title>
+<link rel="manifest" href="./manifest.json">
+<style>
+:root{--cream:#fbf8f1;--white:#fffefa;--sage:#e7ede3;--green:#526b55;--gold:#b79a60;--text:#26352a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--text);font-family:Arial,sans-serif}
+header{padding:18px 5%;background:white;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.brand{font-size:22px;font-weight:bold;color:var(--green)}
+nav{display:flex;gap:14px;flex-wrap:wrap}
+nav a{color:var(--green);text-decoration:none;font-size:14px}
+.hero{text-align:center;padding:65px 18px;background:linear-gradient(135deg,var(--sage),var(--cream))}
+h1{font-family:Georgia,serif;font-size:clamp(34px,7vw,56px);margin:12px}
+.hero p{color:#687268}
+main{max-width:1050px;margin:auto;padding:25px 16px 60px}
+section{margin:35px 0;scroll-margin-top:20px}
+h2{font-family:Georgia,serif;font-size:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:white;border:1px solid #e8e4da;border-radius:16px;padding:22px;box-shadow:0 5px 20px #26352a08}
+h3{color:var(--green)}
+textarea,input,select{width:100%;padding:13px;margin:8px 0 15px;border:1px solid #d9ded5;border-radius:9px;font:inherit}
+textarea{min-height:110px}
+button{background:var(--green);color:white;border:0;border-radius:9px;padding:12px 18px;cursor:pointer;font-size:15px}
+button:disabled{opacity:.6}
+.output{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f3eb;padding:14px;border-radius:10px;margin-top:14px;min-height:40px}
+.muted{color:#687268}
+img.result{max-width:100%;border-radius:12px;margin-top:15px}
+footer{text-align:center;background:var(--green);color:white;padding:25px}
+</style>
 </head>
-
 <body>
-  <header>
-    <div class="brand">✦ Hafsa AI Studio</div>
-    <nav aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#videoCreator">AI Video</a>
-      <a href="#chat">AI Chat</a>
-      <a href="#creator">Content Creator</a>
-      <a href="#website">Website Helper</a>
-    </nav>
-  </header>
+<header>
+<div class="brand">✦ Hafsa AI Studio</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#chat">AI Chat</a>
+<a href="#images">AI Images</a>
+<a href="#creator">Content Creator</a>
+<a href="#website">Website Helper</a>
+</nav>
+</header>
 
-  <section class="hero" id="home">
-    <div class="eyebrow">Your creative workspace</div>
-    <h1>Create More.<br>Build Something Beautiful.</h1>
-    <p>
-      Create video ideas, plan social content, and build your digital projects
-      with Hafsa AI Studio.
-    </p>
-    <a class="button" href="#videoCreator">Create AI Video</a>
-    <a class="button secondary" href="#creator">Create Content</a>
-  </section>
+<div class="hero" id="home">
+<p>YOUR CREATIVE AI WORKSPACE</p>
+<h1>Create More.<br>Build Something Beautiful.</h1>
+<p>Chat with AI, create images and grow your creative projects.</p>
+<button onclick="location.href='#chat'">Start Creating</button>
+</div>
 
-  <main>
-    <!-- AI VIDEO CREATOR -->
-    <section id="videoCreator">
-      <h2 class="section-title">AI Video Creator</h2>
-      <p class="section-intro">
-        Turn your text prompt into an AI-generated video.
-      </p>
+<main>
+<section id="chat">
+<h2>AI Chat Assistant</h2>
+<p class="muted">Ask questions and get AI-powered help.</p>
+<div class="card">
+<textarea id="chatInput" placeholder="Ask anything..."></textarea>
+<button id="chatBtn" onclick="sendChat()">Send Message</button>
+<div class="output" id="chatOutput">Your AI answer will appear here.</div>
+</div>
+</section>
 
-      <div class="card">
-        <label for="videoPrompt">Describe your video</label>
-        <textarea id="videoPrompt"
-          placeholder="Example: A peaceful garden at sunrise, cinematic camera movement, realistic lighting..."></textarea>
+<section id="images">
+<h2>AI Image Generator</h2>
+<p class="muted">Describe the picture you want to create.</p>
+<div class="card">
+<textarea id="imagePrompt" placeholder="Describe your image..."></textarea>
+<select id="imageRatio">
+<option value="1:1">Square image</option>
+<option value="9:16">Portrait image</option>
+<option value="16:9">Landscape image</option>
+</select>
+<button id="imageBtn" onclick="generateImage()">Generate Image</button>
+<div class="output" id="imageOutput">Your generated image will appear here.</div>
+<div id="imageResult"></div>
+</div>
+</section>
 
-        <label for="videoRatio">Video format</label>
-        <select id="videoRatio">
-          <option value="9:16">Vertical — Instagram Reels / TikTok</option>
-          <option value="16:9">Landscape — YouTube</option>
-          <option value="1:1">Square</option>
-        </select>
+<section id="creator">
+<h2>Social Content Creator</h2>
+<div class="card">
+<label>Topic or business name</label>
+<input id="topic" placeholder="e.g. Digital services">
+<label>Platform</label>
+<select id="platform">
+<option>Instagram</option><option>TikTok</option>
+<option>Facebook</option><option>LinkedIn</option>
+</select>
+<label>Content type</label>
+<select id="contentType">
+<option>Social media caption</option>
+<option>Video script</option>
+<option>Content ideas</option>
+</select>
+<button onclick="createContent()">Create Content</button>
+<div class="output" id="contentOutput">Your content will appear here.</div>
+<button onclick="copyText('contentOutput')">Copy Content</button>
+</div>
+</section>
 
-        <button class="button" id="videoGenerateButton">
-          Generate Video
-        </button>
+<section id="website">
+<h2>Website Helper</h2>
+<div class="card">
+<input id="projectName" placeholder="Enter your website or app idea">
+<button onclick="makePlan()">Create Project Plan</button>
+<div class="output" id="planOutput">Your project plan will appear here.</div>
+</div>
+</section>
+</main>
 
-        <div class="output" id="videoOutput" aria-live="polite">
-          Your video status will appear here.
-        </div>
+<footer>
+<strong>Hafsa AI Studio</strong>
+<p>Learn • Create • Build</p>
+<p>© <span id="year"></span> Hafsa AI Studio</p>
+</footer>
 
-        <video id="generatedVideo"
-          class="video-frame"
-          controls
-          playsinline
-          style="display:none;">
-        </video>
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
 
-        <p class="notice">
-          Video generation uses fal.ai and may incur charges according to
-          your account and model pricing. Generation time can vary.
-        </p>
-      </div>
-    </section>
+async function sendChat(){
+const prompt=document.getElementById("chatInput").value.trim();
+const out=document.getElementById("chatOutput");
+const btn=document.getElementById("chatBtn");
+if(!prompt){out.textContent="Please enter a message.";return;}
+btn.disabled=true;out.textContent="AI is thinking...";
+try{
+const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:prompt})});
+const d=await r.json();
+if(!r.ok)throw Error(d.error||"Chat request failed");
+out.textContent=d.reply||"No answer received.";
+}catch(e){out.textContent="Error: "+e.message;}
+finally{btn.disabled=false;}
+}
 
-    <!-- AI CHAT -->
-    <section id="chat">
-      <h2 class="section-title">AI Chat</h2>
-      <p class="section-intro">
-        Ask a question or describe what you want help with.
-      </p>
+async function generateImage(){
+const prompt=document.getElementById("imagePrompt").value.trim();
+const ratio=document.getElementById("imageRatio").value;
+const out=document.getElementById("imageOutput");
+const btn=document.getElementById("imageBtn");
+const result=document.getElementById("imageResult");
+if(!prompt){out.textContent="Please describe your image.";return;}
+btn.disabled=true;out.textContent="Creating your image...";result.innerHTML="";
+try{
+const r=await fetch("/api/image",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt,aspect_ratio:ratio})});
+const d=await r.json();
+if(!r.ok)throw Error(d.error||"Image generation failed");
+if(!d.imageUrl)throw Error("No image URL received");
+const img=document.createElement("img");
+img.src=d.imageUrl;img.alt="AI generated image";img.className="result";
+result.appendChild(img);
+const a=document.createElement("a");a.href=d.imageUrl;a.target="_blank";a.textContent="Open image";
+result.appendChild(document.createElement("br"));result.appendChild(a);
+out.textContent="Your image is ready!";
+}catch(e){out.textContent="Error: "+e.message;}
+finally{btn.disabled=false;}
+}
 
-      <div class="card">
-        <label for="chatInput">Your message</label>
-        <textarea id="chatInput"
-          placeholder="Write your question here..."></textarea>
-        <button class="button" id="chatButton">Send Message</button>
-        <div class="output" id="chatOutput" aria-live="polite">
-          Your demo response will appear here.
-        </div>
-        <p class="notice">
-          Demo mode: this chat is not connected to a real AI model yet.
-        </p>
-      </div>
-    </section>
+async function createContent(){
+const topic=document.getElementById("topic").value.trim();
+const platform=document.getElementById("platform").value;
+const type=document.getElementById("contentType").value;
+const out=document.getElementById("contentOutput");
+if(!topic){out.textContent="Please enter a topic.";return;}
+out.textContent="Preparing your content...";
+try{
+const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"Create a "+type+" about "+topic+" for "+platform+". Make it professional and engaging."})});
+const d=await r.json();
+if(!r.ok)throw Error(d.error||"Request failed");
+out.textContent=d.reply;
+}catch(e){out.textContent="Error: "+e.message;}
+}
 
-    <!-- SOCIAL CONTENT CREATOR -->
-    <section id="creator">
-      <h2 class="section-title">Social Content Creator</h2>
-      <p class="section-intro">
-        Prepare a caption, short video script or content ideas.
-      </p>
+function makePlan(){
+const name=document.getElementById("projectName").value.trim();
+document.getElementById("planOutput").textContent=name?
+"Project: "+name+"\n\n1. Define the project goal.\n2. Plan the pages and features.\n3. Prepare text and images.\n4. Build the design.\n5. Test on mobile and desktop.\n6. Publish and maintain.":
+"Please enter your project idea.";
+}
 
-      <div class="card">
-        <label for="topic">Topic or business name</label>
-        <input id="topic" placeholder="e.g. Website designing">
+async function copyText(id){
+try{await navigator.clipboard.writeText(document.getElementById(id).textContent);alert("Copied!");}
+catch(e){alert("Please select and copy the text.");}
+}
 
-        <label for="platform">Platform</label>
-        <select id="platform">
-          <option>Instagram</option>
-          <option>TikTok</option>
-          <option>Facebook</option>
-          <option>LinkedIn</option>
-        </select>
-
-        <label for="contentType">Content type</label>
-        <select id="contentType">
-          <option value="caption">Social media caption</option>
-          <option value="script">Short video script</option>
-          <option value="ideas">Content ideas</option>
-        </select>
-
-        <button class="button" id="generateButton">Generate Draft</button>
-        <div class="output" id="contentOutput" aria-live="polite">
-          Your draft will appear here.
-        </div>
-        <button class="button" id="copyButton">Copy Draft</button>
-      </div>
-    </section>
-
-    <!-- WEBSITE HELPER -->
-    <section id="website">
-      <h2 class="section-title">Website Helper</h2>
-      <p class="section-intro">
-        Start planning a website or software project.
-      </p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Website Planner</h3>
-          <label for="projectName">Project name</label>
-          <input id="projectName" placeholder="e.g. My online store">
-
-          <label for="projectType">Project type</label>
-          <select id="projectType">
-            <option>Business website</option>
-            <option>Online store</option>
-            <option>Portfolio website</option>
-            <option>Mobile-friendly web app</option>
-          </select>
-
-          <button class="button" id="planButton">Create Plan</button>
-          <div class="output" id="planOutput" aria-live="polite">
-            Your project plan will appear here.
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Learning Corner</h3>
-          <p>
-            Learn HTML, CSS, JavaScript, websites and apps
-            one step at a time.
-          </p>
-          <button class="button" id="learnButton">Show First Lesson</button>
-          <div class="output" id="lessonOutput" aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p><strong>Hafsa AI Studio</strong></p>
-    <p>Learn • Create • Build</p>
-    <p>© <span id="year"></span> Hafsa AI Studio</p>
-  </footer>
-
-  <script>
-    const $ = (id) => document.getElementById(id);
-
-    $("year").textContent = new Date().getFullYear();
-
-    // AI VIDEO GENERATOR
-    $("videoGenerateButton").addEventListener("click", async () => {
-      const prompt = $("videoPrompt").value.trim();
-      const aspect_ratio = $("videoRatio").value;
-      const button = $("videoGenerateButton");
-      const output = $("videoOutput");
-      const video = $("generatedVideo");
-
-      if (!prompt) {
-        output.textContent = "Please describe the video you want to create.";
-        $("videoPrompt").focus();
-        return;
-      }
-
-      button.disabled = true;
-      button.textContent = "Submitting...";
-      video.style.display = "none";
-      video.removeAttribute("src");
-      video.load();
-
-      try {
-        output.textContent = "Submitting your video request to the AI service...";
-
-        const response = await fetch("/api/generate", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt, aspect_ratio })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || "Could not submit the video request.");
-        }
-
-        if (!data.requestId) {
-          throw new Error("The server did not return a video request ID.");
-        }
-
-        const requestId = data.requestId;
-        output.textContent =
-          "Your video is in the queue. Please wait; this can take a few minutes.";
-
-        const deadline = Date.now() + 5 * 60 * 1000;
-        let completed = false;
-
-        while (Date.now() < deadline) {
-          await new Promise(resolve => setTimeout(resolve, 5000));
-
-          const statusResponse = await fetch("/api/status", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ requestId })
-          });
-
-          const statusData = await statusResponse.json();
-
-          if (!statusResponse.ok) {
-            throw new Error(statusData.error || "Could not check video status.");
-          }
-
-          if (statusData.status === "COMPLETED") {
-            if (!statusData.video) {
-              throw new Error("The job finished, but no video URL was returned.");
-            }
-
-            video.src = statusData.video;
-            video.style.display = "block";
-            video.load();
-
-            output.textContent =
-              "Your video is ready! Press Play to watch it. You can use the video player's menu to save it if available.";
-
-            completed = true;
-            break;
-          }
-
-          if (
-            statusData.status === "FAILED" ||
-            statusData.status === "CANCELLED"
-          ) {
-            throw new Error("Video generation did not complete. Please try again.");
-          }
-
-          output.textContent =
-            "Video status: " + (statusData.status || "PROCESSING") +
-            "\nPlease keep this page open while the video is being generated.";
-        }
-
-        if (!completed) {
-          output.textContent =
-            "This is taking longer than expected. Your request may still be processing. Please try checking again later.";
-        }
-      } catch (error) {
-        console.error("Video generation error:", error);
-        output.textContent = "Error: " + (error.message || "Something went wrong.");
-      } finally {
-        button.disabled = false;
-        button.textContent = "Generate Video";
-      }
-    });
-
-    // AI CHAT DEMO
-    $("chatButton").addEventListener("click", () => {
-      const message = $("chatInput").value.trim();
-
-      if (!message) {
-        $("chatOutput").textContent = "Please enter a message first.";
-        return;
-      }
-
-      $("chatOutput").textContent =
-        "Your message: " + message +
-        "\n\nThis is currently a demo. Connect a secure AI backend " +
-        "to receive real AI-generated answers.";
-    });
-
-    // SOCIAL CONTENT DRAFTS
-    $("generateButton").addEventListener("click", () => {
-      const topic = $("topic").value.trim();
-      const platform = $("platform").value;
-      const type = $("contentType").value;
-
-      if (!topic) {
-        $("contentOutput").textContent = "Please enter a topic first.";
-        return;
-      }
-
-      let draft = "";
-
-      if (type === "caption") {
-        draft =
-          "Discover " + topic + " with a fresh approach!\n\n" +
-          "Explore ideas, find inspiration and take the next step " +
-          "towards your goals.\n\n" +
-          "What do you think? Share your thoughts below!\n\n" +
-          "#CreativeIdeas #DigitalServices #" +
-          platform.replace(/\s/g, "");
-      } else if (type === "script") {
-        draft =
-          "VIDEO SCRIPT — " + topic + "\n\n" +
-          "HOOK: Looking for a fresh idea for " + topic + "?\n\n" +
-          "MAIN: Show the problem, explain your service or idea, " +
-          "and share one useful benefit.\n\n" +
-          "CALL TO ACTION: Follow for more tips!\n\n" +
-          "Platform: " + platform;
-      } else {
-        draft =
-          "CONTENT IDEAS — " + topic + "\n\n" +
-          "1. Introduce your topic.\n" +
-          "2. Share three helpful tips.\n" +
-          "3. Answer a common question.\n" +
-          "4. Show your process or work.\n" +
-          "5. Share a useful checklist.\n\n" +
-          "Platform: " + platform;
-      }
-
-      $("contentOutput").textContent = draft;
-    });
-
-    $("copyButton").addEventListener("click", async () => {
-      const text = $("contentOutput").textContent;
-
-      try {
-        await navigator.clipboard.writeText(text);
-        $("copyButton").textContent = "Copied!";
-        setTimeout(() => {
-          $("copyButton").textContent = "Copy Draft";
-        }, 1800);
-      } catch (error) {
-        $("contentOutput").textContent +=
-          "\n\nClipboard not available. Please select and copy the text manually.";
-      }
-    });
-
-    // WEBSITE PLANNER
-    $("planButton").addEventListener("click", () => {
-      const name = $("projectName").value.trim();
-      const type = $("projectType").value;
-
-      if (!name) {
-        $("planOutput").textContent = "Please enter a project name.";
-        return;
-      }
-
-      $("planOutput").textContent =
-        "PROJECT: " + name + "\n" +
-        "TYPE: " + type + "\n\n" +
-        "Suggested steps:\n" +
-        "1. Decide your website's purpose.\n" +
-        "2. Plan the Home, About and Contact pages.\n" +
-        "3. Prepare your text and images.\n" +
-        "4. Build and test the layout on mobile and desktop.\n" +
-        "5. Publish the website and check every link.";
-    });
-
-    // LEARNING CORNER
-    $("learnButton").addEventListener("click", () => {
-      $("lessonOutput").textContent =
-        "LESSON 1: HTML\n\n" +
-        "HTML gives a webpage its structure. For example, " +
-        "<h1>Hello</h1> creates a main heading.\n\n" +
-        "CSS controls how a page looks, while JavaScript " +
-        "adds interactions.";
-    });
-
-    // SERVICE WORKER
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./service-worker.js")
-          .catch(error => {
-            console.error("Service worker registration failed:", error);
-          });
-      });
-    }
-  </script>
+if("serviceWorker" in navigator){
+window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(()=>{}));
+}
+</script>
 </body>
 </html>
